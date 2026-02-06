@@ -106,7 +106,26 @@ useSchemaOrg([
       '@type': 'Offer',
       price: product.price,
       priceCurrency: 'BRL',
-      availability: 'https://schema.org/InStock'
+      availability: 'https://schema.org/InStock',
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        applicableCountry: 'BR',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        merchantReturnDays: 7,
+        returnMethod: 'https://schema.org/ReturnInStore'
+      },
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: {
+          '@type': 'MonetaryAmount',
+          value: 0,
+          currency: 'BRL'
+        },
+        shippingDestination: {
+          '@type': 'DefinedRegion',
+          addressCountry: 'BR'
+        }
+      }
     }
   }))
 ])

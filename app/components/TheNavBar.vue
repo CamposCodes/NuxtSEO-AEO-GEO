@@ -36,6 +36,13 @@ const scrollToSection = (href: string) => {
   }
 }
 
+// Sync URL Hash on active section change (Deep Linking)
+watch(activeSection, (newHash) => {
+  if (newHash && window.location.hash !== newHash) {
+    history.replaceState(null, '', newHash)
+  }
+})
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
   handleScroll() // Init

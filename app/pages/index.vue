@@ -5,7 +5,7 @@
     <main>
       <SectionHero />
 
-      <!-- AEO/GEO Direct Answer Section (Removed per user request) -->
+      <SectionFAQ :items="faqs" />
 
       <SectionStats />
       <SectionAbout />
@@ -75,17 +75,6 @@ useSchemaOrg([
     '@id': `${siteConfig.url}/#webpage`,
     name: 'Climm - Forros de PVC de Alta Qualidade',
     description: 'Soluções em forros de PVC, isolamento térmico e acabamentos para sua obra.'
-  },
-  {
-    '@type': 'FAQPage',
-    mainEntity: faqs.map(faq => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer
-      }
-    }))
   }
 ])
 

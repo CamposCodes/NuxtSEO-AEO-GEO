@@ -3,7 +3,7 @@ export default defineAppConfig({
         name: 'Climm - Soluções Inteligentes',
         tagline: 'Transforme seu ambiente com forros Climm.',
         logo: '/logo.svg',
-        social: {
+        socialLinks: {
             twitter: 'https://twitter.com/climm', // Update if real link exists
             instagram: 'https://instagram.com/climm', // Update if real link exists
             facebook: 'https://facebook.com/climm' // Update if real link exists
@@ -21,7 +21,7 @@ export default defineAppConfig({
             city: 'Juiz de Fora',
             state: 'MG',
             country: 'BR',
-            postalCode: '' // Add if known
+            postalCode: '36083-050'
         }
     }
 })

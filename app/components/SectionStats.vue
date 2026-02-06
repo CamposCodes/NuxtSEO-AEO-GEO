@@ -6,13 +6,15 @@ const stats = [
 ]
 
 // Animated Counter Logic
-const counts = reactive(stats.map(() => 0))
+// Initialize with actual values so SSR/Scrapers see the data (AEO fix)
+const counts = reactive(stats.map(s => s.value))
 const sectionRef = ref(null)
 const hasAnimated = ref(false)
 
 const animate = () => {
   if (hasAnimated.value) return
   hasAnimated.value = true
+
 
   stats.forEach((stat, index) => {
     const duration = 2000 // 2s

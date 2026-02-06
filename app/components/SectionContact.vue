@@ -51,6 +51,20 @@ onMounted(() => {
           <p class="text-gray-600 group-hover:text-primary-700 transition-colors text-center text-sm">R. Ten. Lucas Drumont, 75<br>Jardim Natal, Juiz de Fora - MG</p>
         </div>
       </div>
+
+      <!-- Google Maps Embed -->
+      <div class="mt-12 w-full h-[400px] rounded-2xl overflow-hidden shadow-xl border border-white/50 bg-white/50 backdrop-blur-sm">
+        <iframe
+          title="Mapa de Localização Climm"
+          src="https://maps.google.com/maps?q=R.+Ten.+Lucas+Drumont,+75+-+Jardim+Natal,+Juiz+de+Fora+-+MG&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="100%"
+          style="border:0"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </div>
   </section>
 </template>
