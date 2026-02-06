@@ -1,15 +1,20 @@
 <script setup lang="ts">
+import { useSchemaOrg, defineLocalBusiness, defineOgImageComponent, useSeoMeta, useHead, useAppConfig, useSiteConfig } from '#imports'
+
 const appConfig = useAppConfig()
 const siteConfig = useSiteConfig()
 
 // Organization Schema (Global Identity for GEO)
+// Upgrading to LocalBusiness for "Near Me" optimization and Service definition
 useSchemaOrg([
-  defineOrganization({
+  defineLocalBusiness({
+    '@id': '#localbusiness',
     name: siteConfig.name,
     url: siteConfig.url,
     logo: `${siteConfig.url}${appConfig.brand?.logo}`,
     description: siteConfig.description,
     foundingDate: appConfig.company?.foundingDate,
+    priceRange: '$$', // Moderate pricing
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Support',
@@ -31,12 +36,19 @@ useSchemaOrg([
       appConfig.brand?.socialLinks?.instagram,
       appConfig.brand?.socialLinks?.facebook
     ]
-  })
+  }),
+  {
+    '@type': 'Service',
+    name: 'Instalação de Forros de PVC',
+    provider: { '@id': '#localbusiness' },
+    areaServed: { '@type': 'Country', name: 'Brasil' },
+    description: 'Instalação profissional de forros de PVC com garantia, acabamento premium e limpeza pós-obra.'
+  }
 ])
 
 // Configure the automatic OG Image generator (from the user screenshot)
 defineOgImageComponent('NuxtSeo', {
-  title: siteConfig.name, // Will show "Climm - Soluções Inteligentes"
+  title: siteConfig.name, // Will show "Climm - PVC para Soluções Inteligentes"
   description: siteConfig.description,
   theme: '#1e293b', // primary-900 (slate-900 approx)
   colorMode: 'dark'
@@ -50,7 +62,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   twitterTitle: siteConfig.name,
   twitterDescription: siteConfig.description,
-  // twitterImage: '/assets/pvc.png'
+  twitterImage: '/assets/pvc.png'
 })
 
 useHead({
@@ -69,4 +81,3 @@ useHead({
     </NuxtLayout>
   </div>
 </template>
-

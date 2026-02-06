@@ -14,30 +14,19 @@ export default defineNuxtConfig({
     '@nuxt/fonts'
   ],
 
+  // O uso do siteConfig para definir a identidade única da Climm e a ativação modular da suíte @nuxtjs/seo
   // Site Config - Single Source of Truth
+  // Zero Config, onde uma única fonte de verdade alimenta o Robots, Sitemap e Schema.org simultaneamente
   site: {
-    url: 'https://climm.com.br', // Placeholder per plan
-    name: 'Climm - Soluções Inteligentes',
-    description: 'Landing page otimizada para SEO, AEO e GEO usando Nuxt 4.',
+    url: 'https://climm.vercel.app',
+    name: 'Climm - PVC para Soluções Inteligentes',
+    description: 'Inovação e Qualidade em Forros de PVC. Há mais de 5 anos transformamos ambientes com soluções inovadoras em forros de PVC.',
     defaultLocale: 'pt-BR',
     identity: {
       type: 'Organization'
     }
   },
 
-  // Robots.txt Strategy for AI/LLM visibility
-  robots: {
-    groups: [
-      {
-        userAgent: ['GPTBot', 'PerplexityBot', 'ClaudeBot', 'Google-Extended'],
-        allow: ['/']
-      },
-      {
-        userAgent: ['*'],
-        allow: ['/']
-      }
-    ]
-  },
 
   // Sitemap Configuration
   sitemap: {
@@ -48,7 +37,21 @@ export default defineNuxtConfig({
     }
   },
 
-  // Tailwind Configuration
+  // Performance & Rendering Strategy (Core Web Vitals)
+  routeRules: {
+    // Homepage is static-heavy, prerender for max speed (TTFB ~0ms)
+    '/': { prerender: true },
+    // API routes (if any) would go here
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
+  },
+
+  // Tailwind
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
     configPath: 'tailwind.config.ts',

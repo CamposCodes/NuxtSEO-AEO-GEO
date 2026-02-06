@@ -16,6 +16,8 @@ const toggle = (index: number) => {
 }
 
 // Automatic AEO Schema Generation
+// Prova de que não é apenas "SEO de tags",
+// mas sim construindo um Grafo de Conhecimento (JSON-LD) que as IAs generativas e motores de resposta esperam consumir
 useSchemaOrg([
   {
     '@type': 'FAQPage',

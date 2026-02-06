@@ -1,2 +1,29 @@
-User-Agent: *
-Disallow:
+# SEO - Standard Crawlers
+User-agent: *
+Allow: /
+# Disallow internal Nuxt files if necessary, but generally keeping open is best for modern SEO
+# Disallow: /_nuxt/
+
+# AEO & GEO - AI Bots & Answer Engines
+# Explicitly allowing these ensures they can read content for answers/summaries
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Sitemap
+Sitemap: https://climm.com.br/sitemap.xml
