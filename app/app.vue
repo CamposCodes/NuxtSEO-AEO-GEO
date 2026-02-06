@@ -7,28 +7,28 @@ useSchemaOrg([
   defineOrganization({
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}${appConfig.brand.logo}`,
+    logo: `${siteConfig.url}${appConfig.brand?.logo}`,
     description: siteConfig.description,
-    foundingDate: appConfig.company.foundingDate,
+    foundingDate: appConfig.company?.foundingDate,
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Support',
-      email: appConfig.company.email,
-      telephone: appConfig.company.phone,
+      email: appConfig.company?.email,
+      telephone: appConfig.company?.phone,
       areaServed: 'BR',
       availableLanguage: ['pt-BR']
     },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: appConfig.company.address.street,
-      addressLocality: appConfig.company.address.city,
-      addressRegion: appConfig.company.address.state,
-      addressCountry: appConfig.company.address.country
+      streetAddress: appConfig.company?.address?.street,
+      addressLocality: appConfig.company?.address?.city,
+      addressRegion: appConfig.company?.address?.state,
+      addressCountry: appConfig.company?.address?.country
     },
     sameAs: [
-      appConfig.brand.social.twitter,
-      appConfig.brand.social.instagram,
-      appConfig.brand.social.facebook
+      appConfig.brand?.social?.twitter,
+      appConfig.brand?.social?.instagram,
+      appConfig.brand?.social?.facebook
     ]
   })
 ])

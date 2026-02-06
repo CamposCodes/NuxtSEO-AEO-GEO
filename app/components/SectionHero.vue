@@ -21,7 +21,8 @@ onMounted(() => {
 
 // Video SEO Schema
 useSchemaOrg([
-  defineVideoObject({
+  {
+    '@type': 'VideoObject',
     name: 'Forro PVC Climm - Alta Qualidade',
     description: 'Demonstração dos forros de PVC Climm: durabilidade, estética e sustentabilidade para seu ambiente.',
     uploadDate: '2024-01-01', // Approximate
@@ -30,7 +31,7 @@ useSchemaOrg([
     embedUrl: '/assets/climm-pvc.mp4',
     duration: 'PT15S', // Estimate 15-30s based on loop
     inLanguage: 'pt-BR'
-  })
+  }
 ])
 </script>
 
