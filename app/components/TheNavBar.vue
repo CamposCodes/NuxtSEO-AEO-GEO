@@ -8,6 +8,7 @@ const navLinks = [
 
 const activeSection = ref('')
 const isScrolled = ref(false)
+const isMobileMenuOpen = ref(false)
 
 // Handle Scroll for Navbar styling and Active Link
 const handleScroll = () => {
@@ -83,10 +84,55 @@ onUnmounted(() => {
       </li>
     </ul>
 
-    <!-- Mobile Menu (Simple Placeholder for now, can be expanded) -->
-    <div class="md:hidden text-primary-900">
-      <span class="text-sm font-bold">Menu</span>
-    </div>
+    <!-- Mobile Menu Toggle -->
+    <button
+      class="md:hidden text-primary-900 focus:outline-none"
+      @click="isMobileMenuOpen = !isMobileMenuOpen"
+      aria-label="Toggle Menu"
+    >
+      <div class="relative w-6 h-6 flex flex-col justify-center gap-1.5 overflow-hidden">
+        <span
+          class="w-full h-0.5 bg-current rounded-full transition-all duration-300"
+          :class="isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''"
+        ></span>
+        <span
+          class="w-full h-0.5 bg-current rounded-full transition-all duration-300"
+          :class="isMobileMenuOpen ? 'opacity-0 translate-x-full' : ''"
+        ></span>
+        <span
+          class="w-full h-0.5 bg-current rounded-full transition-all duration-300"
+          :class="isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''"
+        ></span>
+      </div>
+    </button>
+
+    <!-- Mobile Menu Dropdown -->
+    <transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="transform scale-95 opacity-0 -translate-y-2"
+      enter-to-class="transform scale-100 opacity-100 translate-y-0"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="transform scale-100 opacity-100 translate-y-0"
+      leave-to-class="transform scale-95 opacity-0 -translate-y-2"
+    >
+      <div
+        v-if="isMobileMenuOpen"
+        class="absolute top-full left-0 mt-4 w-full bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-white/60 overflow-hidden md:hidden flex flex-col p-2"
+      >
+        <a
+          v-for="link in navLinks"
+          :key="link.href"
+          :href="link.href"
+          @click.prevent="scrollToSection(link.href); isMobileMenuOpen = false"
+          class="px-4 py-3 rounded-xl text-center text-gray-800 hover:text-primary-700 hover:bg-primary-900/5 transition-colors"
+          :class="{
+            'bg-primary-900/10 text-primary-900 font-medium': activeSection === link.href
+          }"
+        >
+          {{ link.name }}
+        </a>
+      </div>
+    </transition>
   </nav>
 </template>
 
